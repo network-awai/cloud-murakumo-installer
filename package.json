@@ -1,0 +1,9 @@
+{
+  "name": "cloud-murakumo-installer",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "smoke:install": "node scripts/smoke-install.mjs"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "source": "kotoba-lang/murakumo",
+  "commit": "a72f3c403ce878258510b549f91b719bfce8a250",
+  "hashes": {
+    "node.mjs": "16952233d4008552471e852fdd2029c829fa4308bc5cb4086ecedbfefb15db90",
+    "package.json": "a786286a30b67227ef0e73381fddf4f35c51df4361c34ce68cc4a8c7947dcacc",
+    "package-lock.json": "22456888066745a55fae40e659fb7455b4afed3cf7eda5a39be97c7e85789c4a"
+  },
+  "installerSha256": "9940483366d8a039264931398152a325bb6a2f50bdf2201c52c10b1d20c009f1"
+}

@@ -1,0 +1,21 @@
+{ ... }:
+{
+  imports = [
+    ./hardware-configuration.nix # Generated on the target hardware.
+    ./default.nix
+  ];
+
+  networking.hostName = "murakumo-node";
+  networking.useDHCP = true;
+  services.openssh.enable = true;
+  services.openssh.settings.PasswordAuthentication = false;
+  users.users.operator = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "video" "render" ];
+    openssh.authorizedKeys.keys = [ "REPLACE_WITH_YOUR_SSH_PUBLIC_KEY" ];
+  };
+
+  # Choose the tested stable channel and set the release used for the initial
+  # install. Review this when moving the configuration to another NixOS release.
+  system.stateVersion = "26.05";
+}
