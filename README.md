@@ -1,8 +1,10 @@
 # cloud-murakumo-installer
 
-Murakumo node installation assets. The NixOS profile prepares a minimal Linux
-host; `install.sh` installs the public Murakumo node CLI. The model server and
-network admission are separate operator steps.
+The public Murakumo node CLI installer for existing macOS and Linux hosts.
+The model server and network admission are separate operator steps. This
+installer does not write an OS image or alter disk partitions. NixOS boot
+media and OS installation live in
+[`cloud-murakumo-usb-installer`](https://github.com/network-awai/cloud-murakumo-usb-installer).
 
 ## Install the CLI
 
@@ -20,20 +22,8 @@ release files, and never registers a node or starts a service. `release-lock.jso
 records the exact Murakumo commit and hashes. Release URLs use that immutable
 commit, so a subsequent upstream `main` update cannot break an older installer.
 
-## NixOS host preparation
-
-The `nixos/default.nix` module enables Tailscale and graphics support and adds
-Node.js 22, curl and `vulkaninfo`. For a real host, generate its own
-`hardware-configuration.nix`, copy and edit `configuration.example.nix`, set a
-real SSH public key, configure boot/storage/recovery, then import the module.
-Apply with the target host's normal `nixos-rebuild switch` process. Install the
-CLI as the intended node user. Keep the model server bound to loopback unless
-the operator explicitly configures a protected network path.
-
-The 2026-09-26 NixOS 26.05 VM pilot booted and ran `murakumo node --help` with
-Node.js 22. The VM exposed llvmpipe only. Radeon 680M, Prism Vulkan,
-model throughput, concurrent requests and restart recovery still need physical
-host testing before replacing the Ubuntu installation.
+Windows node installation is not supported by the current script. It requires
+its own implementation and verification before being advertised.
 
 ## Promote a CLI release
 
@@ -50,5 +40,5 @@ run `npm test`, and publish this repository before syncing the site. The site
 copies a SHA-256-checked revision of this installer during its build.
 
 Repository boundaries: `kotoba-lang/murakumo` owns CLI code and release files;
-this repository owns the node installation script and NixOS base profile;
+this repository owns the CLI installation script for existing hosts;
 `network-awai/cloud-murakumo` serves `/install.sh` on murakumo.cloud.
