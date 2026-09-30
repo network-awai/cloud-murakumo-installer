@@ -1,10 +1,13 @@
 {
   "source": "kotoba-lang/murakumo",
-  "commit": "a72f3c403ce878258510b549f91b719bfce8a250",
+  "commit": "61b98b61e5194b08aa3ad7b532cca148ee434f29",
+  "channel": "preview",
+  "sourceRef": "origin/feat/device-claim-responder",
   "hashes": {
-    "node.mjs": "16952233d4008552471e852fdd2029c829fa4308bc5cb4086ecedbfefb15db90",
+    "node.mjs": "74c88a70ac99531792b8c75417911bfcd19cb798f07d60cd10b0af81fdf459cb",
     "package.json": "a786286a30b67227ef0e73381fddf4f35c51df4361c34ce68cc4a8c7947dcacc",
-    "package-lock.json": "22456888066745a55fae40e659fb7455b4afed3cf7eda5a39be97c7e85789c4a"
+    "package-lock.json": "22456888066745a55fae40e659fb7455b4afed3cf7eda5a39be97c7e85789c4a",
+    "nixos-node.nix": "2ce738746076a62c731b7c6caeb82c5edf243b107167d94cb4837383aebe807f"
   },
-  "installerSha256": "9940483366d8a039264931398152a325bb6a2f50bdf2201c52c10b1d20c009f1"
+  "installerSha256": "75203000ceefce444abfcfc087a7a1ca2cdb11da89870caa6ae542429b361169"
 }
