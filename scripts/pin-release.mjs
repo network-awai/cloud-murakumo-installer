@@ -21,7 +21,7 @@ try {
   console.error(`Release commit must be reachable from the fetched ${preview ? previewRef : 'origin/main'}.`);
   process.exit(1);
 }
-const files = ['node.mjs', 'package.json', 'package-lock.json'];
+const files = ['node.mjs', 'package.json', 'package-lock.json', 'nixos-node.nix'];
 const hashes = Object.fromEntries(files.map((name) => {
   const bytes = execFileSync('git', ['-C', source, 'show', `${commit}:release/${name}`]);
   return [name, createHash('sha256').update(bytes).digest('hex')];
