@@ -17,7 +17,7 @@ try {
   if (link !== join(env.MURAKUMO_INSTALL_DIR, 'current/murakumo')) throw new Error('Unexpected launcher link');
   const help = execFileSync(join(env.MURAKUMO_BIN_DIR, 'murakumo'), ['node', '--help'],
     { env, encoding: 'utf8', timeout: 30000 });
-  for (const required of ['node earnings', 'node payout', '--idle-only']) {
+  for (const required of ['node qualify', 'node earnings', 'node payout', '--idle-only']) {
     assert.ok(help.includes(required), `Pinned node release does not support ${required}`);
   }
   console.log(result.trim());

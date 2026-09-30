@@ -8,7 +8,7 @@ node -e 'if(Number(process.versions.node.split(".")[0])<22)process.exit(1)' || {
 case "$(uname -s)" in Darwin|Linux) ;; *) echo 'Supported: macOS and Linux.' >&2; exit 1;; esac
 install_dir=${MURAKUMO_INSTALL_DIR:-"$HOME/.local/share/murakumo-cli"}
 bin_dir=${MURAKUMO_BIN_DIR:-"$HOME/.local/bin"}
-base=https://raw.githubusercontent.com/kotoba-lang/murakumo/b03709c57a0ee368ba072dd7300229c75269c9f5/release
+base=https://raw.githubusercontent.com/kotoba-lang/murakumo/254d19d5bd303c0e94047e52a73cee734cea2624/release
 mkdir -p "$install_dir" "$bin_dir"
 install_dir=$(cd "$install_dir" && pwd)
 bin_dir=$(cd "$bin_dir" && pwd)
@@ -22,7 +22,7 @@ for file in node.mjs package.json package-lock.json; do
 done
 node - "$staging" <<'JS'
 const fs=require('fs'),path=require('path'),crypto=require('crypto');
-const hashes={"node.mjs":"5349035f55844fa0fb6ffde7e8789d36026eeb5b52eb478a110e9961120a86fb","package.json":"a786286a30b67227ef0e73381fddf4f35c51df4361c34ce68cc4a8c7947dcacc","package-lock.json":"22456888066745a55fae40e659fb7455b4afed3cf7eda5a39be97c7e85789c4a"};
+const hashes={"node.mjs":"feffee73ae2e48e0e8a44c43256336e19e86db37c551aa6e9f381000171035c9","package.json":"a786286a30b67227ef0e73381fddf4f35c51df4361c34ce68cc4a8c7947dcacc","package-lock.json":"22456888066745a55fae40e659fb7455b4afed3cf7eda5a39be97c7e85789c4a"};
 for(const [file,want] of Object.entries(hashes)){
  const got=crypto.createHash('sha256').update(fs.readFileSync(path.join(process.argv[2],file))).digest('hex');
  if(got!==want){console.error('Release checksum mismatch for '+file+'. Retry with the latest installer.');process.exit(1);}
@@ -44,7 +44,7 @@ exec node "$(cd "$(dirname "$self")" && pwd)/node.mjs" "$@"
 LAUNCHER
 chmod +x "$staging/murakumo"
 "$staging/murakumo" node --help >/dev/null
-release_dir="$install_dir/release-5349035f55844fa0"
+release_dir="$install_dir/release-feffee73ae2e48e0"
 if [ ! -d "$release_dir" ]; then mv "$staging" "$release_dir"; fi
 # Update only the installer's own links; never replace an existing directory.
 [ ! -e "$install_dir/current" ] || [ -L "$install_dir/current" ] || { echo 'Refusing to replace current directory.' >&2; exit 1; }
@@ -54,3 +54,4 @@ echo "Installed: $bin_dir/murakumo"
 case ":$PATH:" in *":$bin_dir:"*) ;; *) echo "Add $bin_dir to PATH in your shell profile, or use the full path above.";; esac
 echo 'Next: murakumo node init'
 echo 'Then: murakumo node doctor --model <your-served-model-id>'
+echo 'After device claim: murakumo node check, qualify, then join --idle-only with the same model and name.'
