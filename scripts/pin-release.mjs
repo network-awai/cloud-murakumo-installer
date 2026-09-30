@@ -32,7 +32,7 @@ for (const marker of ['__HASHES__', '__VERSION__', '__RELEASE_COMMIT__']) {
 }
 const installer = template
   .replace('__HASHES__', JSON.stringify(hashes))
-  .replace('__VERSION__', hashes['node.mjs'].slice(0, 16))
+  .replace('__VERSION__', createHash('sha256').update(JSON.stringify(hashes)).digest('hex').slice(0, 16))
   .replace('__RELEASE_COMMIT__', commit);
 writeFileSync(resolve(root, 'install.sh'), installer);
 writeFileSync(resolve(root, 'release-lock.json'), JSON.stringify({

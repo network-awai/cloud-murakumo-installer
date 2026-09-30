@@ -8,7 +8,7 @@ node -e 'if(Number(process.versions.node.split(".")[0])<22)process.exit(1)' || {
 case "$(uname -s)" in Darwin|Linux) ;; *) echo 'Supported: macOS and Linux.' >&2; exit 1;; esac
 install_dir=${MURAKUMO_INSTALL_DIR:-"$HOME/.local/share/murakumo-cli"}
 bin_dir=${MURAKUMO_BIN_DIR:-"$HOME/.local/bin"}
-base=https://raw.githubusercontent.com/kotoba-lang/murakumo/918f04d62e89578ed9b24bfa273a23933abe473e/release
+base=https://raw.githubusercontent.com/kotoba-lang/murakumo/61b98b61e5194b08aa3ad7b532cca148ee434f29/release
 mkdir -p "$install_dir" "$bin_dir"
 install_dir=$(cd "$install_dir" && pwd)
 bin_dir=$(cd "$bin_dir" && pwd)
@@ -44,7 +44,7 @@ exec node "$(cd "$(dirname "$self")" && pwd)/node.mjs" "$@"
 LAUNCHER
 chmod +x "$staging/murakumo"
 "$staging/murakumo" node --help >/dev/null
-release_dir="$install_dir/release-74c88a70ac995317"
+release_dir="$install_dir/release-06a3ab584a668c29"
 if [ ! -d "$release_dir" ]; then mv "$staging" "$release_dir"; fi
 # Update only the installer's own links; never replace an existing directory.
 [ ! -e "$install_dir/current" ] || [ -L "$install_dir/current" ] || { echo 'Refusing to replace current directory.' >&2; exit 1; }

@@ -20,5 +20,7 @@ test('published installer and lock describe one immutable release', () => {
   assert.equal(createHash('sha256').update(script).digest('hex'), lock.installerSha256);
   assert.ok(script.includes(`https://raw.githubusercontent.com/${lock.source}/${lock.commit}/release`));
   assert.ok(script.includes(`const hashes=${JSON.stringify(lock.hashes)};`));
+  const version = createHash('sha256').update(JSON.stringify(lock.hashes)).digest('hex').slice(0, 16);
+  assert.ok(script.includes(`release-${version}`));
   assert.ok(!script.includes('/main/release'));
 });

@@ -1,6 +1,6 @@
 {
   "source": "kotoba-lang/murakumo",
-  "commit": "918f04d62e89578ed9b24bfa273a23933abe473e",
+  "commit": "61b98b61e5194b08aa3ad7b532cca148ee434f29",
   "channel": "preview",
   "sourceRef": "origin/feat/device-claim-responder",
   "hashes": {
@@ -9,5 +9,5 @@
     "package-lock.json": "22456888066745a55fae40e659fb7455b4afed3cf7eda5a39be97c7e85789c4a",
     "nixos-node.nix": "2ce738746076a62c731b7c6caeb82c5edf243b107167d94cb4837383aebe807f"
   },
-  "installerSha256": "dd5522a1f7258de5a652f3511e49ee1ceda33b099ac2ab09d5cdca2c97746475"
+  "installerSha256": "75203000ceefce444abfcfc087a7a1ca2cdb11da89870caa6ae542429b361169"
 }
