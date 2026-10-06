@@ -8,7 +8,7 @@ node -e 'if(Number(process.versions.node.split(".")[0])<22)process.exit(1)' || {
 case "$(uname -s)" in Darwin|Linux) ;; *) echo 'Supported: macOS and Linux.' >&2; exit 1;; esac
 install_dir=${MURAKUMO_INSTALL_DIR:-"$HOME/.local/share/murakumo-cli"}
 bin_dir=${MURAKUMO_BIN_DIR:-"$HOME/.local/bin"}
-base=https://raw.githubusercontent.com/kotoba-lang/murakumo/61b98b61e5194b08aa3ad7b532cca148ee434f29/release
+base=https://raw.githubusercontent.com/kotoba-lang/murakumo/471a07f595e7a86f77b5db707c8c5b3d4be4af86/release
 mkdir -p "$install_dir" "$bin_dir"
 install_dir=$(cd "$install_dir" && pwd)
 bin_dir=$(cd "$bin_dir" && pwd)
@@ -22,7 +22,7 @@ for file in node.mjs package.json package-lock.json nixos-node.nix; do
 done
 node - "$staging" <<'JS'
 const fs=require('fs'),path=require('path'),crypto=require('crypto');
-const hashes={"node.mjs":"74c88a70ac99531792b8c75417911bfcd19cb798f07d60cd10b0af81fdf459cb","package.json":"a786286a30b67227ef0e73381fddf4f35c51df4361c34ce68cc4a8c7947dcacc","package-lock.json":"22456888066745a55fae40e659fb7455b4afed3cf7eda5a39be97c7e85789c4a","nixos-node.nix":"2ce738746076a62c731b7c6caeb82c5edf243b107167d94cb4837383aebe807f"};
+const hashes={"node.mjs":"5d421fd2e32327ae2ce04318cfbb66736c2759b516caefcf01b88fd622fef5b7","package.json":"95fed67104441aee31cc77f93f90e5dd412171a21288b3bb4fe9fdc5b1c1f3db","package-lock.json":"705a22363fb593f18bb8c98943b7e8acb1cefa68a50c527247ebcfe30d296644","nixos-node.nix":"1517cc283dd55f415ee942d63d72c3188abfc109d07807a09d58e8a64efca03e"};
 for(const [file,want] of Object.entries(hashes)){
  const got=crypto.createHash('sha256').update(fs.readFileSync(path.join(process.argv[2],file))).digest('hex');
  if(got!==want){console.error('Release checksum mismatch for '+file+'. Retry with the latest installer.');process.exit(1);}
@@ -44,7 +44,7 @@ exec node "$(cd "$(dirname "$self")" && pwd)/node.mjs" "$@"
 LAUNCHER
 chmod +x "$staging/murakumo"
 "$staging/murakumo" node --help >/dev/null
-release_dir="$install_dir/release-06a3ab584a668c29"
+release_dir="$install_dir/release-48e21c05dc478ba5"
 if [ ! -d "$release_dir" ]; then mv "$staging" "$release_dir"; fi
 # Update only the installer's own links; never replace an existing directory.
 [ ! -e "$install_dir/current" ] || [ -L "$install_dir/current" ] || { echo 'Refusing to replace current directory.' >&2; exit 1; }
