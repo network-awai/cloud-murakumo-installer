@@ -1,10 +1,11 @@
 {
   "source": "kotoba-lang/murakumo",
-  "commit": "a72f3c403ce878258510b549f91b719bfce8a250",
+  "commit": "471a07f595e7a86f77b5db707c8c5b3d4be4af86",
   "hashes": {
-    "node.mjs": "16952233d4008552471e852fdd2029c829fa4308bc5cb4086ecedbfefb15db90",
-    "package.json": "a786286a30b67227ef0e73381fddf4f35c51df4361c34ce68cc4a8c7947dcacc",
-    "package-lock.json": "22456888066745a55fae40e659fb7455b4afed3cf7eda5a39be97c7e85789c4a"
+    "node.mjs": "5d421fd2e32327ae2ce04318cfbb66736c2759b516caefcf01b88fd622fef5b7",
+    "package.json": "95fed67104441aee31cc77f93f90e5dd412171a21288b3bb4fe9fdc5b1c1f3db",
+    "package-lock.json": "705a22363fb593f18bb8c98943b7e8acb1cefa68a50c527247ebcfe30d296644",
+    "nixos-node.nix": "1517cc283dd55f415ee942d63d72c3188abfc109d07807a09d58e8a64efca03e"
   },
-  "installerSha256": "9940483366d8a039264931398152a325bb6a2f50bdf2201c52c10b1d20c009f1"
+  "installerSha256": "e148a404389b668c0f0498140ea86c23d370585c2a1f396bbbd636a1ddfa46de"
 }
